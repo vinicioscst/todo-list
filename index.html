@@ -2,11 +2,37 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/styles/css/index.css" />
 
     <title>To-Do List</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="tasks__form">
+        <input
+          type="text"
+          class="add-tasks__input"
+          placeholder="Add a new task"
+        />
+        <button class="submit-tasks__btn">Add</button>
+      </div>
+      <div class="tasks__to-do tasks__list">
+        <p>Tasks to do - 4</p>
+        <ul></ul>
+      </div>
+      <div class="tasks__done tasks__list">
+        <p>Done - 1</p>
+        <ul></ul>
+      </div>
+    </main>
+  </body>
 </html>
