@@ -17,21 +17,21 @@
   </head>
   <body>
     <main>
-      <div class="tasks__form">
+      <form class="tasks__form">
         <input
           type="text"
           class="add-tasks__input"
           placeholder="Add a new task"
         />
         <button class="submit-tasks__btn">Add</button>
+      </form>
+      <div class="todo__section tasks__list-section">
+        <p>Tasks to do - 0</p>
+        <ul class="tasks__to-do tasks__list"></ul>
       </div>
-      <div class="tasks__to-do tasks__list">
-        <p>Tasks to do - 4</p>
-        <ul></ul>
-      </div>
-      <div class="tasks__done tasks__list">
-        <p>Done - 1</p>
-        <ul></ul>
+      <div class="done__section tasks__list-section">
+        <p>Done - 0</p>
+        <ul class="tasks__done tasks__list"></ul>
       </div>
     </main>
   </body>
