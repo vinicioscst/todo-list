@@ -1,5 +1,7 @@
-const tasksToDo = [];
-const tasksDone = [];
+import { loadTasksDone, loadTasksToDo } from "./render.js";
+
+let tasksToDo = [];
+let tasksDone = [];
 
 const handleTaskCreation = () => {
   const input = document.querySelector(".add-tasks__input");
@@ -8,31 +10,49 @@ const handleTaskCreation = () => {
   submitBtn.addEventListener("click", async (event) => {
     event.preventDefault();
 
+    if (input.value.trim() === "") {
+      window.alert("Preencha o campo corretamente");
+      return;
+    }
+
     const newTask = {
       id: tasksToDo.length,
       task: input.value,
     };
 
     tasksToDo.push(newTask);
+    input.value = "";
 
-    loadTasksToDo();
+    loadTasksToDo(tasksToDo);
   });
 };
 
-const loadTasksToDo = () => {
-  const toDoSectionTitle = document.querySelector(".todo__section > p");
-  const toDoList = document.querySelector(".tasks__to-do");
+export const handleTaskEdit = () => {
+  const taskDoneBtn = document.querySelectorAll(".task-done__btn");
+  taskDoneBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-  toDoSectionTitle.innerHTML = `Tasks to do - ${tasksToDo.length}`;
+      const taskCompleted = tasksToDo.find(
+        (task) => task.id === Number(btn.dataset.id)
+      );
 
-  toDoList.innerHTML = "";
-  tasksToDo.forEach((task) => {
-    toDoList.insertAdjacentHTML(
-      "afterbegin",
-      `<li id=${task.id}>${task.task}</li>`
-    );
+      tasksDone.push(taskCompleted);
+      const updatedTasksToDo = tasksToDo.filter(
+        (task) => task.id != btn.dataset.id
+      );
+
+      tasksToDo = updatedTasksToDo;
+
+      renderLists();
+    });
   });
 };
 
-loadTasksToDo();
+const renderLists = () => {
+  loadTasksToDo(tasksToDo);
+  loadTasksDone(tasksDone);
+};
+
 handleTaskCreation();
+renderLists();
