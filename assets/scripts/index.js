@@ -11,7 +11,7 @@ const handleTaskCreation = () => {
     event.preventDefault();
 
     if (input.value.trim() === "") {
-      window.alert("Preencha o campo corretamente");
+      window.alert("Empty fields are not allowed");
       return;
     }
 
@@ -62,7 +62,7 @@ export const handleTaskEdit = () => {
       const taskNewName = prompt("Insert task new name:");
 
       if (taskNewName.trim() === "") {
-        window.alert("Preencha o campo corretamente");
+        window.alert("Empty fields are not allowed");
         return;
       }
 
@@ -90,6 +90,50 @@ export const handleTaskDelete = () => {
   });
 };
 
+export const handleClearToDoList = () => {
+  const clearListBtn = document.querySelector(".todo__section > div > button");
+
+  clearListBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (tasksToDo.length === 0) {
+      window.alert("The list is already empty");
+      return;
+    }
+
+    const wantsToClearList = confirm(
+      "Do you want to clear this list? This action can't be undone"
+    );
+
+    if (wantsToClearList) {
+      tasksToDo.length = 0;
+      renderLists();
+    }
+  });
+};
+
+export const handleClearDoneList = () => {
+  const clearListBtn = document.querySelector(".done__section > div > button");
+
+  clearListBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (tasksDone.length === 0) {
+      window.alert("The list is already empty");
+      return;
+    }
+
+    const wantsToClearList = confirm(
+      "Do you want to clear this list? This action can't be undone"
+    );
+
+    if (wantsToClearList) {
+      tasksDone.length = 0;
+      renderLists();
+    }
+  });
+};
+
 const renderLists = () => {
   loadTasksToDo(tasksToDo);
   loadTasksDone(tasksDone);
@@ -97,3 +141,5 @@ const renderLists = () => {
 
 handleTaskCreation();
 renderLists();
+handleClearToDoList();
+handleClearDoneList();
