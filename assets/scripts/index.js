@@ -23,6 +23,9 @@ const handleTaskCreation = () => {
     tasksToDo.push(newTask);
     input.value = "";
 
+    const tasksToDoJson = JSON.stringify(tasksToDo);
+    localStorage.setItem("TODOLIST@TASKSTODO", tasksToDoJson);
+
     loadTasksToDo(tasksToDo);
   });
 };
@@ -43,6 +46,12 @@ export const handleTaskConclusion = () => {
       );
 
       tasksToDo = updatedTasksToDo;
+
+      const tasksToDoJson = JSON.stringify(tasksToDo);
+      localStorage.setItem("TODOLIST@TASKSTODO", tasksToDoJson);
+
+      const tasksDoneJson = JSON.stringify(tasksDone);
+      localStorage.setItem("TODOLIST@TASKSDONE", tasksDoneJson);
 
       renderLists();
     });
@@ -68,7 +77,10 @@ export const handleTaskEdit = () => {
 
       tasksToDo[taskToEditIndex].task = taskNewName;
 
-      renderLists();
+      const tasksToDoJson = JSON.stringify(tasksToDo);
+      localStorage.setItem("TODOLIST@TASKSTODO", tasksToDoJson);
+
+      loadTasksToDo(tasksToDo);
     });
   });
 };
@@ -85,7 +97,10 @@ export const handleTaskDelete = () => {
 
       tasksToDo = updatedTasksToDo;
 
-      renderLists();
+      const tasksToDoJson = JSON.stringify(tasksToDo);
+      localStorage.setItem("TODOLIST@TASKSTODO", tasksToDoJson);
+
+      loadTasksToDo(tasksToDo);
     });
   });
 };
@@ -106,8 +121,9 @@ export const handleClearToDoList = () => {
     );
 
     if (wantsToClearList) {
-      tasksToDo.length = 0;
-      renderLists();
+      tasksToDo = [];
+      localStorage.removeItem("TODOLIST@TASKSTODO");
+      loadTasksToDo(tasksToDo);
     }
   });
 };
@@ -128,8 +144,9 @@ export const handleClearDoneList = () => {
     );
 
     if (wantsToClearList) {
-      tasksDone.length = 0;
-      renderLists();
+      tasksDone = [];
+      localStorage.removeItem("TODOLIST@TASKSDONE");
+      loadTasksDone(tasksDone);
     }
   });
 };

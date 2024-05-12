@@ -8,6 +8,12 @@ export const loadTasksToDo = (tasksToDo) => {
   const toDoSectionTitle = document.querySelector(".todo__section > div > p");
   const toDoList = document.querySelector(".tasks__to-do");
 
+  let savedTasksToDo = JSON.parse(localStorage.getItem("TODOLIST@TASKSTODO"));
+  if (savedTasksToDo != null) {
+    tasksToDo.length = 0;
+    tasksToDo.push(...savedTasksToDo);
+  }
+
   toDoSectionTitle.innerHTML = `Tasks to do - ${tasksToDo.length}`;
 
   toDoList.innerHTML = "";
@@ -39,6 +45,12 @@ export const loadTasksToDo = (tasksToDo) => {
 export const loadTasksDone = (tasksDone) => {
   const doneSectionTitle = document.querySelector(".done__section > div > p");
   const doneList = document.querySelector(".tasks__done");
+
+  let savedTasksDone = JSON.parse(localStorage.getItem("TODOLIST@TASKSDONE"));
+  if (savedTasksDone != null) {
+    tasksDone.length = 0;
+    tasksDone.push(...savedTasksDone);
+  }
 
   doneSectionTitle.innerHTML = `Done - ${tasksDone.length}`;
 
