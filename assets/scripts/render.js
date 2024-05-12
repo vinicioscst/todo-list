@@ -1,4 +1,4 @@
-import { handleTaskEdit } from "./index.js";
+import { handleTaskDelete, handleTaskEdit } from "./index.js";
 
 export const loadTasksToDo = (tasksToDo) => {
   const toDoSectionTitle = document.querySelector(".todo__section > div > p");
@@ -25,6 +25,7 @@ export const loadTasksToDo = (tasksToDo) => {
   });
 
   handleTaskEdit();
+  handleTaskDelete();
 };
 
 export const loadTasksDone = (tasksDone) => {

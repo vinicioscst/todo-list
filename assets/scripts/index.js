@@ -49,6 +49,23 @@ export const handleTaskEdit = () => {
   });
 };
 
+export const handleTaskDelete = () => {
+  const taskDeleteBtn = document.querySelectorAll(".task-delete__btn");
+  taskDeleteBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const updatedTasksToDo = tasksToDo.filter(
+        (task) => task.id != btn.dataset.id
+      );
+
+      tasksToDo = updatedTasksToDo;
+
+      renderLists();
+    });
+  });
+};
+
 const renderLists = () => {
   loadTasksToDo(tasksToDo);
   loadTasksDone(tasksDone);
