@@ -1,4 +1,8 @@
-import { handleTaskDelete, handleTaskEdit } from "./index.js";
+import {
+  handleTaskDelete,
+  handleTaskConclusion,
+  handleTaskEdit,
+} from "./index.js";
 
 export const loadTasksToDo = (tasksToDo) => {
   const toDoSectionTitle = document.querySelector(".todo__section > div > p");
@@ -16,6 +20,9 @@ export const loadTasksToDo = (tasksToDo) => {
             <button class="task-done__btn" data-id=${task.id}>
               <img src="./assets/icons/check.svg" />
             </button>
+            <button class="task-edit__btn" data-id=${task.id}>
+              <img src="./assets/icons/edit.svg" />
+            </button>
             <button class="task-delete__btn" data-id=${task.id}>
               <img src="./assets/icons/trash.svg" />
             </button>
@@ -24,6 +31,7 @@ export const loadTasksToDo = (tasksToDo) => {
     );
   });
 
+  handleTaskConclusion();
   handleTaskEdit();
   handleTaskDelete();
 };

@@ -27,7 +27,7 @@ const handleTaskCreation = () => {
   });
 };
 
-export const handleTaskEdit = () => {
+export const handleTaskConclusion = () => {
   const taskDoneBtn = document.querySelectorAll(".task-done__btn");
   taskDoneBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -43,6 +43,30 @@ export const handleTaskEdit = () => {
       );
 
       tasksToDo = updatedTasksToDo;
+
+      renderLists();
+    });
+  });
+};
+
+export const handleTaskEdit = () => {
+  const taskEditBtn = document.querySelectorAll(".task-edit__btn");
+  taskEditBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const taskToEditIndex = tasksToDo.findIndex(
+        (task) => task.id === Number(btn.dataset.id)
+      );
+
+      const taskNewName = prompt("Insert task new name:");
+
+      if (taskNewName.trim() === "") {
+        window.alert("Preencha o campo corretamente");
+        return;
+      }
+
+      tasksToDo[taskToEditIndex].task = taskNewName;
 
       renderLists();
     });
