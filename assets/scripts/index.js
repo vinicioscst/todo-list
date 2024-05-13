@@ -6,9 +6,9 @@ let tasksDone = [];
 
 const handleTaskCreation = () => {
   const input = document.querySelector(".add-tasks__input");
-  const submitBtn = document.querySelector(".submit-tasks__btn");
+  const submitButton = document.querySelector(".submit-tasks__button");
 
-  submitBtn.addEventListener("click", async (event) => {
+  submitButton.addEventListener("click", async (event) => {
     event.preventDefault();
 
     if (input.value.trim() === "") {
@@ -32,18 +32,18 @@ const handleTaskCreation = () => {
 };
 
 export const handleTaskConclusion = () => {
-  const taskDoneBtn = document.querySelectorAll(".task-done__btn");
-  taskDoneBtn.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+  const taskDoneButton = document.querySelectorAll(".task-done__button");
+  taskDoneButton.forEach((button) => {
+    button.addEventListener("click", (e) => {
       e.preventDefault();
 
       const taskCompleted = tasksToDo.find(
-        (task) => task.id === Number(btn.dataset.id)
+        (task) => task.id === Number(button.dataset.id)
       );
 
       tasksDone.push(taskCompleted);
       const updatedTasksToDo = tasksToDo.filter(
-        (task) => task.id != btn.dataset.id
+        (task) => task.id != button.dataset.id
       );
 
       tasksToDo = updatedTasksToDo;
@@ -60,13 +60,13 @@ export const handleTaskConclusion = () => {
 };
 
 export const handleTaskEdit = () => {
-  const taskEditBtn = document.querySelectorAll(".task-edit__btn");
-  taskEditBtn.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+  const taskEditButton = document.querySelectorAll(".task-edit__button");
+  taskEditButton.forEach((button) => {
+    button.addEventListener("click", (e) => {
       e.preventDefault();
 
       const taskToEditIndex = tasksToDo.findIndex(
-        (task) => task.id === Number(btn.dataset.id)
+        (task) => task.id === Number(button.dataset.id)
       );
 
       const taskNewName = prompt("Insert task new name:");
@@ -87,9 +87,9 @@ export const handleTaskEdit = () => {
 };
 
 export const handleTaskDelete = () => {
-  const taskDeleteBtn = document.querySelectorAll(".task-delete__btn");
-  taskDeleteBtn.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+  const taskDeleteButton = document.querySelectorAll(".task-delete__button");
+  taskDeleteButton.forEach((button) => {
+    button.addEventListener("click", (e) => {
       e.preventDefault();
 
       const wantsToDeleteTask = confirm(
@@ -101,7 +101,7 @@ export const handleTaskDelete = () => {
       }
 
       const updatedTasksToDo = tasksToDo.filter(
-        (task) => task.id != btn.dataset.id
+        (task) => task.id != button.dataset.id
       );
 
       tasksToDo = updatedTasksToDo;
@@ -114,53 +114,55 @@ export const handleTaskDelete = () => {
   });
 };
 
-export const handleClearToDoList = () => {
-  const clearListBtn = document.querySelector(".todo__section > div > button");
+export const handleClearList = () => {
+  const clearListButton = document.querySelectorAll(".clear-tasks__button");
 
-  clearListBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+  clearListButton.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    if (tasksToDo.length === 0) {
-      window.alert("The list is already empty");
-      return;
-    }
+      const listType = button.dataset.list;
 
-    const wantsToClearList = confirm(
-      "Do you want to clear this list? This action can't be undone"
-    );
-
-    if (wantsToClearList) {
-      tasksToDo = [];
-      localStorage.removeItem("TODOLIST@TASKSTODO");
-      loadTasksToDo(tasksToDo);
-    }
+      if (listType === "tasksDone") {
+        const emptyList = clearList(
+          tasksDone,
+          "TODOLIST@TASKSDONE",
+          loadTasksDone
+        );
+        tasksDone = emptyList;
+      } else if (listType === "tasksToDo") {
+        const emptyList = clearList(
+          tasksToDo,
+          "TODOLIST@TASKSTODO",
+          loadTasksToDo
+        );
+        tasksToDo = emptyList;
+      }
+    });
   });
 };
 
-export const handleClearDoneList = () => {
-  const clearListBtn = document.querySelector(".done__section > div > button");
+const clearList = (list, localStorageItem, renderListFunction) => {
+  if (list.length === 0) {
+    window.alert("The list is already empty");
+    return;
+  }
 
-  clearListBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+  const wantsToClearList = confirm(
+    "Do you want to clear this list? This action can't be undone"
+  );
 
-    if (tasksDone.length === 0) {
-      window.alert("The list is already empty");
-      return;
-    }
+  if (wantsToClearList) {
+    list = [];
+    localStorage.removeItem(localStorageItem);
 
-    const wantsToClearList = confirm(
-      "Do you want to clear this list? This action can't be undone"
-    );
+    renderListFunction(list);
 
-    if (wantsToClearList) {
-      tasksDone = [];
-      localStorage.removeItem("TODOLIST@TASKSDONE");
-      loadTasksDone(tasksDone);
-    }
-  });
+    return list;
+  }
 };
 
-const renderLists = () => {
+export const renderLists = () => {
   loadTasksToDo(tasksToDo);
   loadTasksDone(tasksDone);
 };
@@ -168,5 +170,4 @@ const renderLists = () => {
 handleTheme();
 handleTaskCreation();
 renderLists();
-handleClearToDoList();
-handleClearDoneList();
+handleClearList();

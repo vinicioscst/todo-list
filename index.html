@@ -31,21 +31,25 @@
           class="add-tasks__input"
           placeholder="Add a new task"
         />
-        <button class="submit-tasks__btn" type="submit">
+        <button class="submit-tasks__button" type="submit">
           <img src="./assets/icons/add.svg" title="Add task" />
         </button>
       </form>
       <div class="todo__section tasks__list-section">
         <div>
           <p>Tasks to do - 0</p>
-          <button class="clear-tasks__btn">Clear</button>
+          <button class="clear-tasks__button" data-list="tasksToDo">
+            Clear
+          </button>
         </div>
         <ul class="tasks__to-do tasks__list"></ul>
       </div>
       <div class="done__section tasks__list-section">
         <div>
           <p>Done - 0</p>
-          <button class="clear-tasks__btn">Clear</button>
+          <button class="clear-tasks__button" data-list="tasksDone">
+            Clear
+          </button>
         </div>
         <ul class="tasks__done tasks__list"></ul>
       </div>
