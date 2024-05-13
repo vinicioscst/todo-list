@@ -7,11 +7,11 @@ export const handleTheme = () => {
 
   if (themePreference === "light") {
     toggleButton.title = "Change to dark theme";
-    buttonImg.src = "../assets/icons/moon.svg";
+    buttonImg.src = "./assets/icons/moon.svg";
     root.setAttribute("data-theme", "light");
   } else {
     toggleButton.title = "Change to light theme";
-    buttonImg.src = "../assets/icons/sun.svg";
+    buttonImg.src = "./assets/icons/sun.svg";
     root.setAttribute("data-theme", "dark");
   }
 
@@ -20,13 +20,13 @@ export const handleTheme = () => {
       localStorage.setItem("TODOLIST@THEME", "light");
 
       toggleButton.title = "Change to dark theme";
-      buttonImg.src = "../assets/icons/moon.svg";
+      buttonImg.src = "./assets/icons/moon.svg";
       root.setAttribute("data-theme", "light");
     } else {
       localStorage.setItem("TODOLIST@THEME", "dark");
 
       toggleButton.title = "Change to light theme";
-      buttonImg.src = "../assets/icons/sun.svg";
+      buttonImg.src = "./assets/icons/sun.svg";
       root.setAttribute("data-theme", "dark");
     }
   });
