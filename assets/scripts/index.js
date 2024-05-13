@@ -91,6 +91,14 @@ export const handleTaskDelete = () => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
 
+      const wantsToDeleteTask = confirm(
+        "Do you want to delete this task? This action can't be undone"
+      );
+
+      if (!wantsToDeleteTask) {
+        return;
+      }
+
       const updatedTasksToDo = tasksToDo.filter(
         (task) => task.id != btn.dataset.id
       );
