@@ -1,4 +1,28 @@
-@use "variables" as v;
+@use "colors" as c;
+
+:root {
+  --background-color: #{c.$dark-background-color};
+  --container-color: #{c.$dark-container-color};
+  --task-background-color-1: #{c.$dark-task-background-color};
+  --task-background-color-2: #{c.$dark-task-background-color};
+  --accent-color-1: #{c.$dark-accent-color-1};
+  --accent-color-2: #{c.$dark-accent-color-2};
+  --button-hover-color: #{c.$dark-button-hover-color};
+  --text-color: #{c.$dark-text-color-1};
+  --placeholder-color: #{c.$dark-text-color-2};
+}
+
+[data-theme="light"] {
+  --background-color: #{c.$light-background-color};
+  --container-color: #{c.$light-container-color};
+  --task-background-color-1: #{c.$light-task-background-color-1};
+  --task-background-color-2: #{c.$light-task-background-color-2};
+  --accent-color-1: #{c.$light-accent-color-1};
+  --accent-color-2: #{c.$light-accent-color-2};
+  --button-hover-color: #{c.$light-button-hover-color};
+  --text-color: #{c.$light-text-color};
+  --placeholder-color: #{c.$light-text-color};
+}
 
 * {
   margin: 0;
@@ -8,7 +32,7 @@
   -webkit-font-smoothing: antialiased;
 
   &:focus-visible {
-    outline: 2px solid v.$dark-accent-text-color;
+    outline: 2px solid #{var(--accent-color-2)};
     outline-offset: 1px;
   }
 }

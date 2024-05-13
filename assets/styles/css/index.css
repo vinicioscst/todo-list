@@ -1,3 +1,27 @@
+:root {
+  --background-color: #0d0714;
+  --container-color: #1d1825;
+  --task-background-color-1: #15101c;
+  --task-background-color-2: #15101c;
+  --accent-color-1: #9e78cf;
+  --accent-color-2: #78cfb0;
+  --button-hover-color: #ab89d6;
+  --text-color: #ffffff;
+  --placeholder-color: #777777;
+}
+
+[data-theme=light] {
+  --background-color: #f3ebff;
+  --container-color: #ffffff;
+  --task-background-color-1: #efe5ff;
+  --task-background-color-2: #dbfff2;
+  --accent-color-1: #9e78cf;
+  --accent-color-2: #78cfb0;
+  --button-hover-color: #ab89d6;
+  --text-color: #505050;
+  --placeholder-color: #505050;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +29,7 @@
   -webkit-font-smoothing: antialiased;
 }
 *:focus-visible {
-  outline: 2px solid #78cfb0;
+  outline: 2px solid var(--accent-color-2);
   outline-offset: 1px;
 }
 
@@ -39,8 +63,8 @@ body {
   font-weight: 400;
   font-size: 1rem;
   min-height: 100dvh;
-  background-color: #0d0714;
-  color: #ffffff;
+  background-color: var(--background-color);
+  color: var(--text-color);
   padding: 0 1rem;
   display: flex;
   flex-direction: row;
@@ -49,16 +73,21 @@ body {
   gap: 0;
 }
 body main {
-  background-color: #1d1825;
+  background-color: var(--container-color);
   width: 100%;
   max-width: 36.5rem;
-  padding: 3.25rem clamp(1rem, 10vw, 4.6875rem);
-  margin: 3rem auto;
+  padding: 3.25rem 2rem;
+  margin: 5rem auto;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3.75rem;
+}
+@media (min-width: 640px) {
+  body main {
+    padding: 3.25rem 4.6875rem;
+  }
 }
 
 .tasks__form {
@@ -71,25 +100,25 @@ body main {
   width: 100%;
   padding: 0.625rem 1rem;
   background-color: transparent;
-  color: #ffffff;
+  color: var(--text-color);
   font-size: 1rem;
-  border: 1px solid #9e78cf;
+  border: 1px solid var(--accent-color-1);
   border-radius: 10px;
 }
 .tasks__form input ::-moz-placeholder {
-  color: #777777;
+  color: var(--placeholder-color);
 }
 .tasks__form input ::placeholder {
-  color: #777777;
+  color: var(--placeholder-color);
 }
 .tasks__form button {
   padding: 0 0.5938rem;
-  background-color: #9e78cf;
+  background-color: var(--accent-color-1);
   border-radius: 10px;
   transition: background-color ease 0.25s, color ease 0.25s;
 }
 .tasks__form button:hover {
-  background-color: #78cfb0;
+  background-color: var(--button-hover-color);
 }
 
 .tasks__list-section {
@@ -109,14 +138,14 @@ body main {
 .clear-tasks__btn {
   padding: 0.75rem;
   background-color: transparent;
-  color: #9e78cf;
-  border: 1px solid #9e78cf;
+  color: var(--accent-color-1);
+  border: 1px solid var(--accent-color-1);
   border-radius: 4px;
   transition: background-color ease 0.25s, color ease 0.25s;
 }
 .clear-tasks__btn:hover {
-  background-color: #9e78cf;
-  color: #ffffff;
+  background-color: var(--accent-color-1);
+  color: var(--text-color);
 }
 
 .tasks__to-do {
@@ -127,9 +156,9 @@ body main {
 .tasks__to-do > li {
   width: 100%;
   padding: 1.375rem 1.25rem;
-  background-color: #15101c;
   border-radius: 10px;
-  color: #9e78cf;
+  background-color: var(--task-background-color-1);
+  color: var(--accent-color-1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -147,13 +176,41 @@ body main {
 .tasks__done > li {
   width: 100%;
   padding: 1.375rem 1.25rem;
-  background-color: #15101c;
   border-radius: 10px;
-  color: #78cfb0;
+  background-color: var(--task-background-color-2);
+  color: var(--accent-color-2);
   text-decoration: line-through;
 }
 
 .task__actions {
   display: flex;
   gap: 8px;
+}
+
+.todo-list__config {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .todo-list__config {
+    right: 20px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
+
+.toggle-theme__button {
+  padding: 0 0.5938rem;
+  background-color: var(--accent-color-1);
+  border-radius: 10px;
+  transition: background-color ease 0.25s, color ease 0.25s;
+  height: 40px;
+}
+.toggle-theme__button:hover {
+  background-color: var(--button-hover-color);
 }/*# sourceMappingURL=index.css.map */
