@@ -23,13 +23,13 @@ export const loadTasksToDo = (tasksToDo) => {
       `<li id=${task.id}>
           ${task.task}
           <div class="task__actions">
-            <button class="task-done__btn" data-id=${task.id}>
+            <button class="task-done__button" data-id=${task.id}>
               <img src="./assets/icons/check.svg" title="Mark task as done" />
             </button>
-            <button class="task-edit__btn" data-id=${task.id}>
+            <button class="task-edit__button" data-id=${task.id}>
               <img src="./assets/icons/edit.svg" title="Edit task" />
             </button>
-            <button class="task-delete__btn" data-id=${task.id}>
+            <button class="task-delete__button" data-id=${task.id}>
               <img src="./assets/icons/trash.svg" title="Delete task" />
             </button>
           </div>
