@@ -1,4 +1,5 @@
 import { loadTasksDone, loadTasksToDo } from "./render.js";
+import { handleTheme } from "./theme.js";
 
 let tasksToDo = [];
 let tasksDone = [];
@@ -164,6 +165,7 @@ const renderLists = () => {
   loadTasksDone(tasksDone);
 };
 
+handleTheme();
 handleTaskCreation();
 renderLists();
 handleClearToDoList();
