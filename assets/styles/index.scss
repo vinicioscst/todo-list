@@ -38,6 +38,7 @@ body {
 
     background-color: transparent;
     color: v.$dark-primary-text-color;
+    font-size: 1rem;
 
     border: 1px solid v.$dark-accent-color;
     border-radius: 10px;
@@ -48,7 +49,7 @@ body {
   }
 
   & button {
-    padding: 0 8px;
+    padding: 0 0.5938rem;
     background-color: v.$dark-accent-color;
     border-radius: 10px;
 
@@ -71,7 +72,7 @@ body {
 }
 
 .clear-tasks__btn {
-  padding: 0.5rem;
+  padding: 0.75rem;
 
   background-color: transparent;
   color: v.$dark-accent-color;

@@ -12,6 +12,7 @@
 button {
   cursor: pointer;
   border: 0;
+  line-height: 0;
 }
 
 input,
@@ -71,6 +72,7 @@ body main {
   padding: 0.625rem 1rem;
   background-color: transparent;
   color: #ffffff;
+  font-size: 1rem;
   border: 1px solid #9e78cf;
   border-radius: 10px;
 }
@@ -81,7 +83,7 @@ body main {
   color: #777777;
 }
 .tasks__form button {
-  padding: 0 8px;
+  padding: 0 0.5938rem;
   background-color: #9e78cf;
   border-radius: 10px;
   transition: background-color ease 0.25s, color ease 0.25s;
@@ -105,7 +107,7 @@ body main {
 }
 
 .clear-tasks__btn {
-  padding: 0.5rem;
+  padding: 0.75rem;
   background-color: transparent;
   color: #9e78cf;
   border: 1px solid #9e78cf;
