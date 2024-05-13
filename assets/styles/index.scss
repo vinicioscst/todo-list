@@ -1,5 +1,5 @@
 @use "reset";
-@use "variables" as v;
+@use "colors" as c;
 @use "mixins";
 
 body {
@@ -9,22 +9,26 @@ body {
 
   min-height: 100dvh;
 
-  background-color: v.$dark-background-color;
-  color: v.$dark-primary-text-color;
+  background-color: #{var(--background-color)};
+  color: #{var(--text-color)};
 
   padding: 0 1rem;
 
   @include mixins.flex-property(row, center, center);
 
   & main {
-    background-color: v.$dark-primary-color;
+    background-color: #{var(--container-color)};
     width: 100%;
     max-width: 36.5rem;
-    padding: 3.25rem clamp(1rem, 10vw, 4.6875rem);
-    margin: 3rem auto;
+    padding: 3.25rem 2rem;
+    margin: 5rem auto;
     border-radius: 20px;
 
     @include mixins.flex-property(column, center, null, 3.75rem);
+
+    @include mixins.sm {
+      padding: 3.25rem 4.6875rem;
+    }
   }
 }
 
@@ -37,27 +41,19 @@ body {
     padding: 0.625rem 1rem;
 
     background-color: transparent;
-    color: v.$dark-primary-text-color;
+    color: #{var(--text-color)};
     font-size: 1rem;
 
-    border: 1px solid v.$dark-accent-color;
+    border: 1px solid #{var(--accent-color-1)};
     border-radius: 10px;
 
     ::placeholder {
-      color: v.$dark-secondary-text-color;
+      color: #{var(--placeholder-color)};
     }
   }
 
   & button {
-    padding: 0 0.5938rem;
-    background-color: v.$dark-accent-color;
-    border-radius: 10px;
-
-    transition: background-color ease 0.25s, color ease 0.25s;
-
-    &:hover {
-      background-color: v.$dark-accent-text-color;
-    }
+    @include mixins.primary-button();
   }
 }
 
@@ -75,16 +71,16 @@ body {
   padding: 0.75rem;
 
   background-color: transparent;
-  color: v.$dark-accent-color;
+  color: #{var(--accent-color-1)};
 
-  border: 1px solid v.$dark-accent-color;
+  border: 1px solid #{var(--accent-color-1)};
   border-radius: 4px;
 
   transition: background-color ease 0.25s, color ease 0.25s;
 
   &:hover {
-    background-color: v.$dark-accent-color;
-    color: v.$dark-primary-text-color;
+    background-color: #{var(--accent-color-1)};
+    color: #{var(--text-color)};
   }
 }
 
@@ -98,4 +94,22 @@ body {
 
 .task__actions {
   @include mixins.flex-property(null, null, null, 8px);
+}
+
+.todo-list__config {
+  @include mixins.flex-property(null, center, center, 8px);
+
+  position: absolute;
+  top: 20px;
+  width: 100%;
+
+  @include mixins.sm {
+    right: 20px;
+    width: fit-content;
+  }
+}
+
+.toggle-theme__button {
+  @include mixins.primary-button();
+  height: 40px;
 }
