@@ -1,14 +1,16 @@
+@use "variables" as v;
+
 * {
   margin: 0;
   padding: 0;
 
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
-}
 
-body {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
+  &:focus-visible {
+    outline: 2px solid v.$dark-accent-text-color;
+    outline-offset: 1px;
+  }
 }
 
 button {
@@ -19,7 +21,8 @@ button {
 input,
 textarea,
 select,
-fieldset {
+fieldset,
+button {
   border: 0;
   outline: 0;
 }

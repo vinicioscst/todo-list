@@ -4,10 +4,9 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
-
-body {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
+*:focus-visible {
+  outline: 2px solid #78cfb0;
+  outline-offset: 1px;
 }
 
 button {
@@ -18,7 +17,8 @@ button {
 input,
 textarea,
 select,
-fieldset {
+fieldset,
+button {
   border: 0;
   outline: 0;
 }
@@ -31,4 +31,127 @@ li {
 
 a {
   text-decoration: none;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  min-height: 100dvh;
+  background-color: #0d0714;
+  color: #ffffff;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+body main {
+  background-color: #1d1825;
+  width: 100%;
+  max-width: 36.5rem;
+  padding: 3.25rem clamp(1rem, 10vw, 4.6875rem);
+  margin: 3rem auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.75rem;
+}
+
+.tasks__form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.tasks__form input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #9e78cf;
+  border-radius: 10px;
+}
+.tasks__form input ::-moz-placeholder {
+  color: #777777;
+}
+.tasks__form input ::placeholder {
+  color: #777777;
+}
+.tasks__form button {
+  padding: 0 8px;
+  background-color: #9e78cf;
+  border-radius: 10px;
+  transition: background-color ease 0.25s, color ease 0.25s;
+}
+.tasks__form button:hover {
+  background-color: #78cfb0;
+}
+
+.tasks__list-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tasks__list-section > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.clear-tasks__btn {
+  padding: 0.5rem;
+  background-color: transparent;
+  color: #9e78cf;
+  border: 1px solid #9e78cf;
+  border-radius: 4px;
+  transition: background-color ease 0.25s, color ease 0.25s;
+}
+.clear-tasks__btn:hover {
+  background-color: #9e78cf;
+  color: #ffffff;
+}
+
+.tasks__to-do {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tasks__to-do > li {
+  width: 100%;
+  padding: 1.375rem 1.25rem;
+  background-color: #15101c;
+  border-radius: 10px;
+  color: #9e78cf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.tasks__to-do > li button {
+  background-color: transparent;
+}
+
+.tasks__done {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tasks__done > li {
+  width: 100%;
+  padding: 1.375rem 1.25rem;
+  background-color: #15101c;
+  border-radius: 10px;
+  color: #78cfb0;
+  text-decoration: line-through;
+}
+
+.task__actions {
+  display: flex;
+  gap: 8px;
 }/*# sourceMappingURL=index.css.map */
